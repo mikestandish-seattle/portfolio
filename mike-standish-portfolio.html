@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Standish | Creative Director & Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141926;
+            --accent-primary: #e8b86d;
+            --accent-secondary: #5d9ba8;
+            --text-primary: #f4f4f4;
+            --text-secondary: #a8adb8;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Header/Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(93, 155, 168, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(232, 184, 109, 0.1) 0%, transparent 50%),
+                var(--bg-primary);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .hero-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .hero-nav a {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(232, 184, 109, 0.3);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-nav a:hover {
+            background: rgba(232, 184, 109, 0.1);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Section Containers */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            margin: 3rem auto;
+        }
+
+        /* Journey Timeline */
+        .journey-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .journey-item {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-secondary);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-item:hover {
+            border-left-color: var(--accent-primary);
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .journey-title {
+            color: var(--accent-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .journey-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .learnings {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .learnings h4 {
+            color: var(--accent-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Work Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .learnings ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .learnings li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .learnings li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Case Studies Grid */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .case-study-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(232, 184, 109, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .case-study-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(93, 155, 168, 0.2) 0%, rgba(232, 184, 109, 0.1) 100%);
+        }
+
+        .case-study-company {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-title {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .case-study-content {
+            padding: 2rem;
+        }
+
+        .case-study-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-study-section h4 {
+            font-size: 0.9rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .case-study-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(93, 155, 168, 0.15);
+            border: 1px solid var(--accent-secondary);
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(232, 184, 109, 0.2);
+            border-color: var(--accent-primary);
+            transform: scale(1.05);
+        }
+
+        /* Early Career */
+        .early-career {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .early-career h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .jobs-list {
+            columns: 2;
+            column-gap: 3rem;
+            list-style: none;
+        }
+
+        .jobs-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            break-inside: avoid;
+            font-size: 0.95rem;
+        }
+
+        .jobs-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .jobs-list {
+                columns: 1;
+            }
+
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Mike.</h1>
+            <p class="hero-subtitle">Creative Director, Writer, & Strategic Storyteller<br>
+            Building narratives that move organizations forward</p>
+            <nav class="hero-nav">
+                <a href="#about">About</a>
+                <a href="#journey">My Journey</a>
+                <a href="#work">Case Studies</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-content">
+            <h2>Who I Am</h2>
+            <div class="section-divider"></div>
+            <p>I'm a creative director, writer, editor, and strategist. But over a career spanning agency and in-house, a more honest job title might be: a creative leader who figures out how to get things done.</p>
+            <p>This comes from working in experiential and event marketing, a field that comprises many disciplines, and often requires people to dive in, even if it's outside of their comfort zone.</p>
+            <p>That's me: I'm not afraid to dive in. And follow where the story takes me.</p>
+            
+            <div class="skills-list">
+                <span class="skill-tag">Strategic Storytelling</span>
+                <span class="skill-tag">Creative Direction</span>
+                <span class="skill-tag">Technical Communications</span>
+                <span class="skill-tag">Event Production</span>
+                <span class="skill-tag">Executive Communications</span>
+                <span class="skill-tag">Content Strategy</span>
+                <span class="skill-tag">Cross-Functional Leadership</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Work -->
+    <section>
+        <div class="section-header">
+            <h2>Currently</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="journey-item">
+            <h3 class="journey-title">Microsoft: Windows + Devices</h3>
+            <p class="journey-text">
+                As Covid forced a sudden transformation of the live-event space, I was brought in by the Microsoft Events, Sponsorships, & Experiences team to help strategize and envision what it meant to produce an event at a time when the world was still getting used to Teams calls as the primary way of connecting with colleagues.
+            </p>
+            <p class="journey-text">
+                Since then, I worked as a vendor embedded on the team to revamp the event briefing process and build a writing discipline to support the Microsoft events portfolio. I've written and edited customer stories, brand-love activations, keynote speeches, videos, blogs, and more.
+            </p>
+            <p class="journey-text">
+                Most recently, I've worked on the Windows + Devices comms team in support of Pavan Davuluri. In addition to coordinating and producing comms deliverables, I supported keynote speakers at Build 2025, including helping conceive and deliver onstage product demos.
+            </p>
+            <div class="learnings">
+                <h4>Key Learnings</h4>
+                <ul>
+                    <li>How to quickly build relationships with high-level stakeholders so they trust me to help them speak authentically and stay on message</li>
+                    <li>The importance of messaging consistency across a plethora of deliverables</li>
+                    <li>The value of communicating impact instead of product features</li>
+                    <li>How to contextualize technology in a larger, more human story</li>
+                    <li>How to diplomatically shepherd drafts through editing and approval processes</li>
+                    <li>How to help speakers deliver their message onstage at events</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey">
+        <div class="section-header">
+            <h2>The Journey</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="early-career">
+            <h3>A Long and Winding Road</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Before finding my calling in creative direction, I did all kinds of work. Here's a partial list of things I have done for money:</p>
+            <ul class="jobs-list">
+                <li>Mowed Mary Novy's lawn</li>
+                <li>Picked tulip bulbs in Mt. Vernon</li>
+                <li>Picked spinach in Stanwood</li>
+                <li>Bagged groceries at Thrifty Foods</li>
+                <li>Middle-school janitor</li>
+                <li>Cleaned the meat department at Fred Meyer</li>
+                <li>Sold shoes at Payless Shoe Source</li>
+                <li>Wrote for the Associated Student Review</li>
+                <li>Sold candy and cigarettes at the Viking Union</li>
+                <li>Cleaned dorm rooms after students left</li>
+                <li>Sold books at Barnes & Noble</li>
+                <li>Wrote a column in a weekly music rag</li>
+                <li>Counselor at YouthCare</li>
+                <li>Temp admin at the University of Washington</li>
+                <li>Sketch and improv comedian</li>
+                <li>Short filmmaker</li>
+            </ul>
+        </div>
+
+        <div class="journey-grid">
+            <div class="journey-item reveal">
+                <h3 class="journey-title">First, I Wrote Shipping News</h3>
+                <p class="journey-text">
+                    Rather than the novels and screenplays I thought I'd write out of college, I got a job writing shipping news for Marine Digest magazine. While others were moving to Seattle to work at a place called Amazon, I was happy to make $8 an hour to write about ballast water and invasive species to an audience of roughly 2,000 people interested in West Coast ports.
+                </p>
+                <p class="journey-text">
+                    I found the job by opening the phone book and calling every newspaper and magazine to see if they wanted to hire me, a fresh college grad with no professional writing experience. It turns out they did.
+                </p>
+                <div class="learnings">
+                    <h4>What I Learned</h4>
+                    <ul>
+                        <li>How to work in a (very small) newsroom</li>
+                        <li>Where to look for stories</li>
+                        <li>How to get people to open up about what they're passionate about</li>
+                        <li>Ballast water contains invasive species</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="journey-item reveal">
+                <h3 class="journey-title">I Edited Technical Manuals</h3>
+                <p class="journey-text">
+                    As the dot-com era was ramping up, I spent six months copy-editing an HTML how-to book. The series with the cute black and white animal drawings on the covers.
+                </p>
+                <div class="learnings">
+                    <h4>What I Learned</h4>
+                    <ul>
+                        <li>How to get quickly up to speed on technical subject matter</li>
+                        <li>How to adhere to a style guide, consistently and accurately</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="journey-item reveal">
+                <h3 class="journey-title">I Went to Disney</h3>
+                <p class="journey-text">
+                    I started at the Walt Disney Internet Group as a copy editor at two daily entertainment news sites. Then I became a staff writer. Then an editor. Then the dot-com crash changed everything.
+                </p>
+                <p class="journey-text">
+                    Our staff was cut. Then cut again. One of our sites was shuttered. In the middle of all this, we decided to launch a brand-new site, Movies.com. As we clawed our way out of the crash, our site traffic grew. I became a senior editor, a columnist, a video maker. Our team was small, which meant I got to do all the things. It was heaven.
+                </p>
+                <div class="learnings">
+                    <h4>What I Learned</h4>
+                    <ul>
+                        <li>Tech companies should have revenue models</li>
+                        <li>How to run a tight editorial calendar</li>
+                        <li>How to interview famous people and review albums</li>
+                        <li>How to write a weekly column</li>
+                        <li>How to build and launch a product</li>
+                        <li>That I didn't want to move to Los Angeles to advance my career</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="journey-item reveal">
+                <h3 class="journey-title">I Became a Creative Director</h3>
+                <p class="journey-text">
+                    I answered a mysterious Craigslist ad for a position that sounded exactly like me and had no idea what I was getting myself into. I didn't even know what a creative director did. I ended up doing it for almost 11 years. It's my vocation and the thing I'm best at.
+                </p>
+                <p class="journey-text">
+                    During my tenure at PBJS we grew from a 20-person indie shop to a 60-person Publicis agency. Our biggest client was Microsoft. I was thrown into the deep end and found myself writing, directing videos, doing exec presentations, building a traveling museum—you name it. It felt like home.
+                </p>
+                <div class="learnings">
+                    <h4>What I Learned</h4>
+                    <ul>
+                        <li>How to have empathy for clients and stakeholders</li>
+                        <li>How to rally a team around an idea</li>
+                        <li>The value of ideas that can be executed</li>
+                        <li>How to create an ecosystem filled with stories that make sense together</li>
+                        <li>How to be a conduit between and translator for various disciplines</li>
+                        <li>The value of the skills of a generalist</li>
+                        <li>How to lead a team and manage people</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="journey-item reveal">
+                <h3 class="journey-title">The Gates Foundation Called</h3>
+                <p class="journey-text">
+                    I had a unique opportunity to move from tech and experiential marketing to global health and development communications. I was tasked with building and evolving a creative team in the comms department. Implementing new processes and working with better agencies. In short: upping the Foundation's creative game.
+                </p>
+                <div class="learnings">
+                    <h4>What I Learned</h4>
+                    <ul>
+                        <li>How to become a subject matter expert, and fast</li>
+                        <li>How to salvage team morale and get back on track</li>
+                        <li>The value of process, and the right amount of it</li>
+                        <li>How to create content for global markets</li>
+                        <li>The usefulness of measurement and research</li>
+                        <li>How to convince people on different teams to all work from and contribute to a single content calendar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="work">
+        <div class="section-header">
+            <h2>Selected Work</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="case-studies-grid">
+            <!-- Copilot+ PC Launch -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">Microsoft</div>
+                    <h3 class="case-study-title">Copilot+ PC Launch & Build 2025</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>On May 20, 2024, Microsoft introduced the world to a new category of Windows PCs designed for AI: Copilot+ PCs. Most recently I supported Pavan Davuluri's Windows + Devices team at Build 2025.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>My Role</h4>
+                        <p>Partnered with comms teams to outline and write executive talk tracks, ensured alignment with business and PR goals, maintained consistent voice and tone across multiple speakers, and worked through the rehearsal process to ensure scripts gave presenters everything they needed to be successful.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Love Activations -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">Microsoft</div>
+                    <h3 class="case-study-title">Brand Love Activations</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>Working with the event design team, I served as writer and editor for brand love activations throughout the year aimed at increasing brand affinity for Microsoft with photo opportunities and interactive content experiences.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>What I Did</h4>
+                        <p>Recent activations centered on AI and Microsoft's four AI for Good commitments. I wrote quizzes on the history of AI, sourced and reimagined AI for Good blogs as physical brand activations, and wrote copy to explain complex tech concepts to event attendees at a glance.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>Key Learning</h4>
+                        <p>Interactive experiences at events have to earn their attention. Creating an experience that is eye-catching yet substantive requires understanding what attendees truly care about and taking complicated subject matter and boiling it down to its essence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goalkeepers -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">Bill & Melinda Gates Foundation</div>
+                    <h3 class="case-study-title">Goalkeepers at the United Nations</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>Started by the Gates Foundation, Goalkeepers is a catalyst for action toward the 17 Global Goals for Sustainable Development—a two-day event at the UN General Assembly featuring world leaders including Prime Minister Justin Trudeau, President Barack Obama, and Malala Yousafzai.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>My Role</h4>
+                        <p>Worked as creative lead on the print data report, videos, and website, and as creative consultant on event and campaign strategy. I edited and supervised production of the foundation's first ever data report, led teams across Europe, Africa, and China, and consulted on all creative elements of the UN event.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>Key Learning</h4>
+                        <p>I came to understand the value of being the person who builds bridges between teams, whether finding the right agency to work with an in-house team or ensuring internal stakeholders are aligned with campaign strategy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campaign Content -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">Bill & Melinda Gates Foundation</div>
+                    <h3 class="case-study-title">Campaign Content</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>The Foundation comprises 29 different strategy teams. The external comms team works with all of them to program videos, data visualizations, and content to support their goals across channels, while overseeing the use of the Foundation's brand and tone-of-voice.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>What I Did</h4>
+                        <p>I treated strategy teams like clients and vendors as an extension of our content team, allowing our small team to operate globally, creating content for audiences in the US, Canada, UK, France, Germany, China, India, and South Africa. I led development from writing scripts and blogs to selecting vendors and steering them through execution of videos and data visualizations.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>Key Learning</h4>
+                        <p>How to get up to speed quickly on a variety of subjects, understand communication styles that perform best on different regional channels, and empathize with teams unfamiliar with the Foundation's ways.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game of Thrones -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">HBO International Marketing</div>
+                    <h3 class="case-study-title">Game of Thrones Exhibition</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>PBJS (now Publicis Experiences) developed and produced the 2015 Game of Thrones Global Exhibition, taking an immersive, sharable experience across Europe on a six-city tour from London to Tel Aviv that engaged nearly 100,000 people.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>My Role</h4>
+                        <p>Creative and design director of the exhibition space, including curation of all props and costumes. Co-creative director for all digital and social content. On the show's set in Belfast, I curated a collection of more than 200 props and costumes and placed each within the exhibition's content plan.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>Key Learning</h4>
+                        <p>The exhibition embodied all that I love about experiential marketing because I got to do everything. Building an experience for hardcore fans set a high bar for subject matter expertise and authenticity, requiring painstaking attention to detail—every costume, every prop, every line had to be perfect.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagine Cup -->
+            <div class="case-study-card reveal">
+                <div class="case-study-header">
+                    <div class="case-study-company">Microsoft</div>
+                    <h3 class="case-study-title">Imagine Cup</h3>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section">
+                        <h4>Overview</h4>
+                        <p>Imagine Cup is a global competition that encourages computer science students to use their creativity, passion, and coding skills to create the next big breakthrough. Finalists from around the world travel to Seattle to compete in a two-day competition.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>My Role</h4>
+                        <p>For three years, I served as lead writer and creative consultant, working with Microsoft's Developer & Platform Evangelism team to develop the approach to each year's event and write all stage and screen content. I evolved the event's format from a multi-hour stage production to a 30-minute event shot for online viewing.</p>
+                    </div>
+                    <div class="case-study-section">
+                        <h4>Key Learning</h4>
+                        <p>Listening to execs, understanding their personalities and speech patterns, and writing for them in a way that helped them feel comfortable onstage. Plus, having empathy for international students competing in a high-pressure coding competition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>This work has now concluded and I'm looking for my next challenge.</p>
+        <p style="margin-top: 2rem; color: var(--accent-primary);">Thank you for your time.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+
+</body>
+</html>
